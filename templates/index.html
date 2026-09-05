@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Razorpay Audit & Reconciliation Canvas</title>
+    <title>Reconcile-It</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,54 +16,91 @@
 </head>
 
 <body>
-    <div class="hd-20-app-container">
-        <!-- Sidebar Navigation Component -->
-        <aside class="hd-20-sidebar">
-            <div class="hd-20-sidebar-brand">
-                <span>Razor<span class="accent">pay</span> Audit</span>
+    <!-- FLOATING LABEL LOGIN SCREEN (Shows first on page load) -->
+    <section class="lf-03" id="login-screen">
+        <form class="lf-03__form" id="login-form" novalidate>
+            <div class="lf-03__brand">
+                <h2 class="lf-03__brand-title">Reconcile<span class="accent">It</span></h2>
             </div>
-            <nav class="hd-20-sidebar-nav">
-                <a href="#" class="hd-20-sidebar-link active">
-                    <span>Reconciliation</span>
-                </a>
+            
+            <div class="lf-03__field">
+                <input class="lf-03__input" id="lf-03-email" type="email" autocomplete="email" value="admin@razorpay.com" placeholder=" " required>
+                <label class="lf-03__label" for="lf-03-email">Email address</label>
+            </div>
+            <div class="lf-03__field">
+                <input class="lf-03__input" id="lf-03-pw" type="password" autocomplete="current-password" value="admin123" placeholder=" " required>
+                <label class="lf-03__label" for="lf-03-pw">Password</label>
+            </div>
+            <div class="lf-03__row">
+                <label class="lf-03__remember"><input type="checkbox" checked> Remember me</label>
+                <a class="lf-03__link" href="#">Forgot?</a>
+            </div>
+            <button class="lf-03__submit" id="lf-03-submit" type="submit">Continue to Dashboard</button>
+        </form>
+    </section>
 
-                <!-- MINIMAL OPERATIONAL CYCLE MONITOR -->
-                <div class="sidebar-monitor">
-                    <div class="sidebar-monitor__header">
-                        <span class="sidebar-monitor__title">Cycle Monitor</span>
-                        <div class="sidebar-monitor__status">
-                            <span class="sidebar-monitor__indicator" aria-hidden="true"></span>
-                            <span class="sidebar-monitor__tag">T+2 Active</span>
-                        </div>
-                    </div>
-
-                    <div class="sidebar-monitor__body">
-                        <!-- Active Batch Scope -->
-                        <div class="sidebar-monitor__row">
-                            <span class="sidebar-monitor__label">Batch ID</span>
-                            <span class="sidebar-monitor__val">SETTLE_20260903</span>
-                        </div>
-
-                        <!-- Cut-Off Window -->
-                        <div class="sidebar-monitor__row">
-                            <span class="sidebar-monitor__label">Cut-off</span>
-                            <span class="sidebar-monitor__val">23:50 IST</span>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        </aside>
-
-        <!-- Header / Topbar Component -->
+    <div class="hd-20-app-container">
+        <!-- Header / Topbar Component (Shifted sidebar color & brand title) -->
         <header class="hd-20-topbar">
-            <div class="hd-20-topbar-title">Financial Reconciliation & Exception Audit</div>
+            <div class="hd-20-topbar-left">
+                <div class="hd-20-topbar-brand">
+                    <span>Re<span class="accent">concile</span> It</span>
+                </div>
+                <div class="hd-20-topbar-divider"></div>
+                <div class="hd-20-topbar-title">Financial Reconciliation &amp; Exception Audit</div>
+            </div>
             <div class="hd-20-topbar-actions">
-                <!-- Header actions placeholder -->
+                <button type="button" id="btn-logout" class="hd-20-logout-btn">Log out</button>
             </div>
         </header>
 
-        <!-- Main Content Area (Blank Mounting Canvas) -->
+        <!-- Main Content Area -->
         <div class="hd-20-content-wrapper">
+            <!-- STATIC SUB-HEADER BAR (CYCLE MONITOR FEATURES & CONTROLS) -->
+            <div class="hd-20-subheader">
+                <!-- T+2 Status Badge -->
+                <div class="hd-20-subheader__item">
+                    <div class="hd-20-subheader__status">
+                        <span class="hd-20-subheader__dot" aria-hidden="true"></span>
+                        <span class="hd-20-subheader__tag">T+2</span>
+                    </div>
+                </div>
+
+                <div class="hd-20-subheader__divider"></div>
+
+                <!-- Active Batch Dropdown -->
+                <div class="hd-20-subheader__item">
+                    <label for="batch-select" class="hd-20-subheader__label">Active Batch</label>
+                    <select id="batch-select" class="hd-20-subheader__select num-mono">
+                        <option value="SETTLE_20260903" selected>SETTLE_20260903</option>
+                        <option value="SETTLE_20260904">SETTLE_20260904</option>
+                        <option value="SETTLE_20260905">SETTLE_20260905</option>
+                        <option value="SETTLE_20260906">SETTLE_20260906</option>
+                        <option value="SETTLE_20260907">SETTLE_20260907</option>
+                        <option value="SETTLE_20260908">SETTLE_20260908</option>
+                        <option value="SETTLE_20260902">SETTLE_20260902</option>
+                        <option value="SETTLE_20260901">SETTLE_20260901</option>
+                        <option value="__create_new__">+ Create New Batch...</option>
+                    </select>
+                </div>
+
+                <div class="hd-20-subheader__divider"></div>
+
+                <!-- Cut-off Window -->
+                <div class="hd-20-subheader__item">
+                    <span class="hd-20-subheader__label">Cut-off Window</span>
+                    <span class="hd-20-subheader__val num-mono" id="monitor-cutoff-val">23:50:00 IST</span>
+                </div>
+
+                <div class="hd-20-subheader__divider"></div>
+
+                <!-- Rulebook Constraints -->
+                <div class="hd-20-subheader__item">
+                    <span class="hd-20-subheader__label">Fee Rate</span>
+                    <span class="hd-20-subheader__val num-mono">2.0% MDR + 18% GST</span>
+                </div>
+            </div>
+
             <main id="hd-20-main">
                 <!-- File Ingestion Deck (Two Separate Upload Feeds) -->
                 <div class="fu-04__deck">
@@ -156,7 +193,7 @@
                 <!-- BATCH STAGING PERSISTENCE BAR -->
                 <div class="cb-06__bar">
                     <!-- Save Button -->
-                    <button class="cb-06__btn" id="btn-save-batch" type="button" data-state="idle"
+                    <button class="cb-06__btn" id="btn-save-batch" type="button" data-state="disabled" disabled
                         aria-describedby="cb-06-live">
                         <!-- Idle State -->
                         <span class="cb-06__slot cb-06__slot--idle">
@@ -185,9 +222,9 @@
                         </span>
                     </button>
 
-                    <!-- Reconcile Button (Ghost / Unclickable until Save button is saved) -->
+                    <!-- Reconcile Button -->
                     <button class="cb-06__btn cb-06__btn--ghost" id="btn-reconcile-batch" type="button"
-                        data-state="disabled" disabled aria-describedby="cb-06-live">
+                        data-state="idle" aria-describedby="cb-06-live">
                         <!-- Idle State -->
                         <span class="cb-06__slot cb-06__slot--idle">
                             <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
@@ -225,63 +262,63 @@
 
                         <!-- CARD 1: RECONCILIATION MATCH RATE -->
                         <article class="thc-10__card" tabindex="0"
-                            aria-label="Reconciliation Match Rate: 80 percent, 48 of 60 settled">
+                            aria-label="Reconciliation Match Rate">
                             <div class="thc-10__head">
                                 <p class="thc-10__label">Match Rate</p>
-                                <span class="thc-10__delta thc-10__delta--teal">48 / 60 Clrd</span>
+                                <span class="thc-10__delta thc-10__delta--teal">0 / 0 Clrd</span>
                             </div>
-                            <p class="thc-10__value" id="kpi-match-rate">80.0%</p>
+                            <p class="thc-10__value" id="kpi-match-rate">&mdash;</p>
                             <div class="thc-10__spark thc-10__spark--teal" aria-hidden="true">
-                                <i style="--v:40"></i><i style="--v:55"></i><i style="--v:62"></i><i
-                                    style="--v:60"></i><i style="--v:75"></i><i style="--v:72"></i><i
-                                    style="--v:80"></i><i style="--v:85"></i><i style="--v:80"></i>
+                                <i style="--v:0"></i><i style="--v:0"></i><i style="--v:0"></i><i
+                                    style="--v:0"></i><i style="--v:0"></i><i style="--v:0"></i><i
+                                    style="--v:0"></i><i style="--v:0"></i><i style="--v:0"></i>
                             </div>
                             <p class="thc-10__foot">Deterministic clearance</p>
                         </article>
 
                         <!-- CARD 2: GROSS INVOICED REVENUE -->
-                        <article class="thc-10__card" tabindex="0" aria-label="Gross Invoiced Revenue: 2,60,520 rupees">
+                        <article class="thc-10__card" tabindex="0" aria-label="Gross Invoiced Revenue">
                             <div class="thc-10__head">
                                 <p class="thc-10__label">ERP Gross Sales</p>
                                 <span class="thc-10__delta thc-10__delta--blue">Vouchers</span>
                             </div>
-                            <p class="thc-10__value" id="kpi-gross-revenue">&#8377;2,60,520</p>
+                            <p class="thc-10__value" id="kpi-gross-revenue">&mdash;</p>
                             <div class="thc-10__spark thc-10__spark--blue" aria-hidden="true">
-                                <i style="--v:50"></i><i style="--v:45"></i><i style="--v:68"></i><i
-                                    style="--v:62"></i><i style="--v:80"></i><i style="--v:78"></i><i
-                                    style="--v:90"></i><i style="--v:88"></i><i style="--v:95"></i>
+                                <i style="--v:0"></i><i style="--v:0"></i><i style="--v:0"></i><i
+                                    style="--v:0"></i><i style="--v:0"></i><i style="--v:0"></i><i
+                                    style="--v:0"></i><i style="--v:0"></i><i style="--v:0"></i>
                             </div>
                             <p class="thc-10__foot">Internal Sales Register</p>
                         </article>
 
                         <!-- CARD 3: GATEWAY MDR + TAX (ITC) -->
                         <article class="thc-10__card" tabindex="0"
-                            aria-label="Gateway MDR and Tax: 6,264 rupees with eligible tax credit">
+                            aria-label="Gateway MDR and Tax">
                             <div class="thc-10__head">
                                 <p class="thc-10__label">MDR &amp; Tax (ITC)</p>
                                 <span class="thc-10__delta thc-10__delta--flame">18% GST</span>
                             </div>
-                            <p class="thc-10__value" id="kpi-gateway-fees">&#8377;6,264.38</p>
+                            <p class="thc-10__value" id="kpi-gateway-fees">&mdash;</p>
                             <div class="thc-10__spark thc-10__spark--flame" aria-hidden="true">
-                                <i style="--v:30"></i><i style="--v:38"></i><i style="--v:42"></i><i
-                                    style="--v:35"></i><i style="--v:48"></i><i style="--v:52"></i><i
-                                    style="--v:44"></i><i style="--v:58"></i><i style="--v:50"></i>
+                                <i style="--v:0"></i><i style="--v:0"></i><i style="--v:0"></i><i
+                                    style="--v:0"></i><i style="--v:0"></i><i style="--v:0"></i><i
+                                    style="--v:0"></i><i style="--v:0"></i><i style="--v:0"></i>
                             </div>
-                            <p class="thc-10__foot">&#8377;955.58 Eligible ITC</p>
+                            <p class="thc-10__foot">Eligible ITC</p>
                         </article>
 
                         <!-- CARD 4: NET BANK PAYOUT DEPOSIT -->
                         <article class="thc-10__card" tabindex="0"
-                            aria-label="Net Bank Payout Deposit: 2,53,455 rupees settled to nodal account">
+                            aria-label="Net Bank Payout Deposit">
                             <div class="thc-10__head">
                                 <p class="thc-10__label">Net Bank Payout</p>
                                 <span class="thc-10__delta thc-10__delta--rust">HDFC Nodal</span>
                             </div>
-                            <p class="thc-10__value" id="kpi-net-payout">&#8377;2,53,455.62</p>
+                            <p class="thc-10__value" id="kpi-net-payout">&mdash;</p>
                             <div class="thc-10__spark thc-10__spark--rust" aria-hidden="true">
-                                <i style="--v:60"></i><i style="--v:64"></i><i style="--v:70"></i><i
-                                    style="--v:68"></i><i style="--v:82"></i><i style="--v:80"></i><i
-                                    style="--v:88"></i><i style="--v:92"></i><i style="--v:90"></i>
+                                <i style="--v:0"></i><i style="--v:0"></i><i style="--v:0"></i><i
+                                    style="--v:0"></i><i style="--v:0"></i><i style="--v:0"></i><i
+                                    style="--v:0"></i><i style="--v:0"></i><i style="--v:0"></i>
                             </div>
                             <p class="thc-10__foot">UTR settlement batch</p>
                         </article>
@@ -289,83 +326,74 @@
                     </div>
                 </section>
 
-                <!-- SUSPENSE & UNMATCHED AUDIT QUEUE -->
-                <section class="tls-03" aria-label="Suspense and Unmatched Settlement Queue">
+                <!-- SUSPENSE & UNMATCHED AUDIT QUEUE (visible only after reconciliation) -->
+                <section class="tls-03" id="suspense-section" aria-label="Suspense and Unmatched Settlement Queue" hidden>
                     <div class="tls-03__sheet">
                         <div class="tls-03__h-row">
                             <h3 class="tls-03__h">Unmatched &amp; Suspense Queue</h3>
                         </div>
 
                         <ol class="tls-03__list" id="suspense-list" role="list">
-                            <!-- Item 1: Upstream Bank Network Drop -->
-                            <li class="tls-03__item" data-risk="CRITICAL">
-                                <div class="tls-03__when">
-                                    <time>ORD_1035</time>
-                                    <span class="tls-03__chip tls-03__chip--critical">CRITICAL</span>
-                                </div>
-                                <div class="tls-03__rail" aria-hidden="true"><span class="tls-03__dot"></span></div>
-                                <div class="tls-03__body">
-                                    <p class="tls-03__role">
-                                        Bank Network Drop
-                                        <span class="tls-03__variance">-&#8377;5,700.00</span>
-                                    </p>
-                                    <p class="tls-03__org">HDFC0000060 &middot; UTR Pending &middot; ERP: SUCCESS</p>
-                                    <ul class="tls-03__pts">
-                                        <li>Gateway returned captured confirmation but upstream bank network dropped
-                                            packet during nodal settlement.</li>
-                                    </ul>
-                                    <button class="tls-03__action" type="button">Block Order Fulfillment</button>
-                                </div>
-                            </li>
-
-                            <!-- Item 2: Dropped Webhook / Ghost Payment -->
-                            <li class="tls-03__item" data-risk="CRITICAL">
-                                <div class="tls-03__when">
-                                    <time>ORD_1044</time>
-                                    <span class="tls-03__chip tls-03__chip--critical">CRITICAL</span>
-                                </div>
-                                <div class="tls-03__rail" aria-hidden="true"><span class="tls-03__dot"></span></div>
-                                <div class="tls-03__body">
-                                    <p class="tls-03__role">
-                                        Dropped Webhook Desync
-                                        <span class="tls-03__variance">+&#8377;3,200.00</span>
-                                    </p>
-                                    <p class="tls-03__org">Razorpay: CAPTURED &middot; ERP: RECORD_MISSING</p>
-                                    <ul class="tls-03__pts">
-                                        <li>Customer account debited and cash captured at nodal account, but ERP
-                                            callback timed out.</li>
-                                    </ul>
-                                    <button class="tls-03__action" type="button">Inject Sales Voucher</button>
-                                </div>
-                            </li>
-
-                            <!-- Item 3: Escrow Holdback (14-Day Return Policy) -->
-                            <li class="tls-03__item" data-risk="MEDIUM">
-                                <div class="tls-03__when">
-                                    <time>ORD_1010</time>
-                                    <span class="tls-03__chip tls-03__chip--hold">HOLD</span>
-                                </div>
-                                <div class="tls-03__rail" aria-hidden="true"><span class="tls-03__dot"></span></div>
-                                <div class="tls-03__body">
-                                    <p class="tls-03__role">
-                                        Nodal Escrow Holdback
-                                        <span class="tls-03__variance"
-                                            style="color: var(--muted);">&#8377;2,700.00</span>
-                                    </p>
-                                    <p class="tls-03__org">Return Window Active &middot; Day 4 of 14</p>
-                                    <ul class="tls-03__pts">
-                                        <li>Settlement temporarily paused under buyer return agreement. Payout scheduled
-                                            for rollover batch.</li>
-                                    </ul>
-                                    <button class="tls-03__action" type="button">Track Window Expiry</button>
-                                </div>
-                            </li>
+                            <!-- Dynamically populated by renderSuspenseQueue() after reconciliation -->
                         </ol>
                     </div>
                 </section>
+
+                <!-- DOWNLOAD BATCH REPORT BUTTON (visible only after reconciliation) -->
+                <div class="dl-report" id="dl-report-bar" hidden>
+                    <button class="dl-report__btn" id="btn-download-report" type="button">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        <span>Download Batch Report</span>
+                    </button>
+                </div>
             </main>
         </div>
     </div>
+
+    <!-- NATIVE DIALOG FOR NEW BATCH CREATION & DUAL DATE PICKER -->
+    <dialog id="new-batch-modal" class="batch-modal">
+        <div class="batch-modal__container">
+            <header class="batch-modal__head">
+                <h3 class="batch-modal__title">Create Settlement Batch</h3>
+                <button type="button" class="batch-modal__close" id="batch-modal-close" aria-label="Close modal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                </button>
+            </header>
+
+            <form id="new-batch-form" class="batch-modal__form" method="dialog">
+                <div class="batch-modal__field">
+                    <label for="batch-id-input" class="batch-modal__label">Batch Identifier</label>
+                    <input type="text" id="batch-id-input" class="batch-modal__input num-mono" placeholder="e.g. SETTLE_20260904" required>
+                </div>
+
+                <!-- Dual Date Picker Inputs -->
+                <div class="batch-modal__dates-grid">
+                    <div class="batch-modal__field">
+                        <label for="window-start-date" class="batch-modal__label">Window Start Date</label>
+                        <input type="date" id="window-start-date" class="batch-modal__input num-mono" required>
+                    </div>
+                    <div class="batch-modal__field">
+                        <label for="window-cutoff-date" class="batch-modal__label">Window Cut-off Date</label>
+                        <input type="date" id="window-cutoff-date" class="batch-modal__input num-mono" required>
+                    </div>
+                </div>
+
+                <div class="batch-modal__field">
+                    <label for="cutoff-time-input" class="batch-modal__label">Daily Cut-off Time</label>
+                    <input type="time" id="cutoff-time-input" class="batch-modal__input num-mono" value="23:50" required>
+                </div>
+
+                <footer class="batch-modal__foot">
+                    <button type="button" class="batch-modal__btn batch-modal__btn--cancel" id="batch-modal-cancel">Cancel</button>
+                    <button type="submit" class="batch-modal__btn batch-modal__btn--submit" id="batch-modal-submit">Create &amp; Switch Batch</button>
+                </footer>
+            </form>
+        </div>
+    </dialog>
 
     <!-- Application Script -->
     <script src="/static/js/app.js"></script>

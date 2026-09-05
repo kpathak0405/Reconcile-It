@@ -25,7 +25,7 @@
   --font-body: var(--font-ui);
 
   /* Layout Dimensions */
-  --sidebar-width: 260px;
+  --sidebar-width: 0px;
   --topbar-height: 64px;
   --border-radius-sm: 4px;
   --border-radius-md: 8px;

@@ -2,25 +2,168 @@
   height: var(--topbar-height);
   position: fixed;
   top: 0;
-  left: var(--sidebar-width);
+  left: 0;
   right: 0;
-  background-color: var(--color-palladian);
-  border-bottom: 1px solid var(--color-oatmeal);
+  width: 100%;
+  background-color: var(--color-abyssal-anchorfish);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 24px;
+  padding: 0 32px;
   z-index: 90;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.hd-20-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.hd-20-topbar-brand {
+  font-family: var(--font-ui);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-palladian);
+  user-select: none;
+}
+
+.hd-20-topbar-brand .accent {
+  color: var(--color-burning-flame);
+}
+
+.hd-20-topbar-divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .hd-20-topbar-title {
-  font-size: 16px;
+  font-family: var(--font-ui);
+  font-size: 20px;
   font-weight: 600;
-  color: var(--color-abyssal-anchorfish);
+  color: #FFFFFF;
+  letter-spacing: -0.01em;
 }
 
 .hd-20-topbar-actions {
   display: flex;
   align-items: center;
   gap: 16px;
+}
+
+.hd-20-logout-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--border-radius-md);
+  padding: 8px 18px;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-palladian);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.hd-20-logout-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: var(--color-burning-flame);
+  color: #FFFFFF;
+}
+
+/* ── Static Sub-Header Bar (Cycle Monitor Features) ── */
+.hd-20-subheader {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0.65rem 1.25rem;
+  background: var(--color-palladian);
+  border: 2px solid var(--color-oatmeal);
+  border-radius: var(--border-radius-md);
+  margin-bottom: 2.0rem;
+  flex-wrap: wrap;
+  box-shadow: 0 22px 8px rgba(0, 0, 0, 0.04);
+}
+
+.hd-20-subheader__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Label: Clean, declared Work Sans font in natural casing */
+.hd-20-subheader__label {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-blue-fantastic);
+  opacity: 0.85;
+}
+
+/* Value / Data ID: Distinctly larger, bold deep text */
+.hd-20-subheader__val {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-abyssal-anchorfish);
+}
+
+.hd-20-subheader__status {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+
+
+.hd-20-subheader__tag {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-abyssal-anchorfish);
+  background: var(--color-burning-flame);
+  padding: 0.15rem 0.75rem;
+  border-radius: 30px;
+}
+
+/* Active Batch Dropdown: Soft greyish background with clear dark typography */
+.hd-20-subheader__select {
+  background: rgba(93, 88, 80, 0.35); /* Subtle greyish oatmeal tint */
+  color: var(--color-abyssal-anchorfish);
+  border: 1px solid var(--color-oatmeal);
+  border-radius: 6px;
+  padding: 0.25rem 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.89rem;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.hd-20-subheader__select:hover,
+.hd-20-subheader__select:focus-visible {
+  background: rgba(54, 46, 31, 0.6);
+  border-color: var(--color-blue-fantastic);
+}
+
+.hd-20-subheader__select option {
+  background: var(--color-palladian);
+  color: var(--color-abyssal-anchorfish);
+  font-family: var(--font-mono);
+}
+
+.hd-20-subheader__divider {
+  width: 1px;
+  height: 1.2rem;
+  background: var(--color-oatmeal);
+  opacity: 0.7;
+}
+
+@media (max-width: 900px) {
+  .hd-20-subheader__divider {
+    display: none;
+  }
 }

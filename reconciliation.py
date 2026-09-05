@@ -157,10 +157,10 @@ def run_reconciliation(erp_file="datasets/internal_sales_orders.csv", gateway_fi
     print(f"Cleanly Reconciled           : {len(reconciled)} ({match_rate:.1f}%)")
     print(f"Exceptions Requiring AI      : {len(exceptions)}")
     print("-" * 60)
-    print(f"Total Gross Sales Verified   : ₹{total_gross:,.2f}")
-    print(f"Gateway Processing Fees      : ₹{total_fee:,.2f}")
-    print(f"Eligible Input Tax Credit    : ₹{total_tax_itc:,.2f}")
-    print(f"Net Deposited in Bank        : ₹{total_net_settled:,.2f}")
+    print(f"Total Gross Sales Verified   : INR {total_gross:,.2f}")
+    print(f"Gateway Processing Fees      : INR {total_fee:,.2f}")
+    print(f"Eligible Input Tax Credit    : INR {total_tax_itc:,.2f}")
+    print(f"Net Deposited in Bank        : INR {total_net_settled:,.2f}")
     print("=" * 60)
 
     return reconciled, exceptions

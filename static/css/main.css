@@ -13,3 +13,6 @@
 @import url('./components/suspense.css');
 @import url('./components/save_button.css');
 @import url('./components/kpi_cards.css');
+@import url('./components/batch_modal.css');
+@import url('./components/download_report.css');
+@import url('./components/login.css');

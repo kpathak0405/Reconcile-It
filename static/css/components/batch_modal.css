@@ -1,0 +1,212 @@
+/* ── Multi-Batch Select & Modal Component ── */
+
+/* Sidebar Select Dropdown */
+.sidebar-monitor__select {
+  width: 135px;
+  background: var(--color-abyssal-anchorfish);
+  color: var(--color-palladian);
+  border: 1px solid var(--color-oatmeal);
+  border-radius: 6px;
+  padding: 3px 6px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sidebar-monitor__select:focus-visible,
+.sidebar-monitor__select:hover {
+  border-color: var(--color-burning-flame);
+}
+
+.sidebar-monitor__select option {
+  background: var(--color-abyssal-anchorfish);
+  color: var(--color-palladian);
+  font-family: var(--font-mono);
+  padding: 6px;
+}
+
+/* Native Dialog & Backdrop */
+.batch-modal {
+  padding: 0;
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+  max-width: 480px;
+  width: calc(100% - 2rem);
+  margin: auto;
+  box-shadow: 0 16px 36px rgba(27, 38, 50, 0.25);
+}
+
+.batch-modal::backdrop {
+  background: rgba(27, 38, 50, 0.6);
+  backdrop-filter: blur(4px);
+  animation: batch-modal-fade 0.2s ease-out;
+}
+
+.batch-modal[open] {
+  animation: batch-modal-scale 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes batch-modal-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes batch-modal-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Modal Inner Container */
+.batch-modal__container {
+  background: var(--color-palladian);
+  border: 1px solid var(--color-oatmeal);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Modal Header */
+.batch-modal__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-oatmeal);
+  padding-bottom: 0.75rem;
+}
+
+.batch-modal__title {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-abyssal-anchorfish);
+}
+
+.batch-modal__close {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: var(--color-blue-fantastic);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.batch-modal__close svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.batch-modal__close:hover {
+  background: rgba(163, 81, 57, 0.12);
+  color: var(--color-truffle-trouble);
+}
+
+/* Form & Inputs */
+.batch-modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.batch-modal__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.batch-modal__label {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-abyssal-anchorfish);
+}
+
+.batch-modal__input {
+  width: 100%;
+  height: 2.5rem;
+  padding: 0 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-oatmeal);
+  background: #FFFFFF;
+  color: var(--color-abyssal-anchorfish);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.batch-modal__input:focus {
+  border-color: var(--color-blue-fantastic);
+  box-shadow: 0 0 0 3px rgba(44, 59, 77, 0.15);
+}
+
+/* Dual Date Grid */
+.batch-modal__dates-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 480px) {
+  .batch-modal__dates-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Footer & Buttons */
+.batch-modal__foot {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--color-oatmeal);
+}
+
+.batch-modal__btn {
+  height: 2.4rem;
+  padding: 0 1.1rem;
+  border-radius: 6px;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.batch-modal__btn--cancel {
+  border: 1px solid var(--color-oatmeal);
+  background: transparent;
+  color: var(--color-blue-fantastic);
+}
+
+.batch-modal__btn--cancel:hover {
+  background: rgba(201, 193, 177, 0.3);
+  color: var(--color-abyssal-anchorfish);
+}
+
+.batch-modal__btn--submit {
+  border: none;
+  background: var(--color-abyssal-anchorfish);
+  color: var(--color-palladian);
+}
+
+.batch-modal__btn--submit:hover {
+  background: var(--color-truffle-trouble);
+}

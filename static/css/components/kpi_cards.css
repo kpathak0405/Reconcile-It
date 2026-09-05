@@ -54,12 +54,10 @@
 }
 
 .thc-10__label {
-  font-family: var(--font-display);
-  font-size: 0.76rem;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
   font-weight: 600;
   color: var(--muted); /* Blue Fantastic */
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
 }
 
 .thc-10__delta {
@@ -94,7 +92,7 @@
 
 .thc-10__value {
   margin-top: 0.6rem;
-  font-family: var(--font-display);
+  font-family: var(--font-ui);
   font-size: 1.65rem;
   font-weight: 700;
   letter-spacing: -0.02em;
