@@ -1,0 +1,36 @@
+:root {
+  /* Color Palette */
+  --color-palladian: #EEE9DF;
+  --color-oatmeal: #C9C1B1;
+  --color-blue-fantastic: #2C3B4D;
+  --color-abyssal-anchorfish: #1B2632;
+  --color-burning-flame: #FFB162;
+  --color-truffle-trouble: #A35139;
+
+  /* Component Palette Aliases */
+  --s1: var(--color-palladian);
+  --line: var(--color-oatmeal);
+  --muted: var(--color-blue-fantastic);
+  --ink: var(--color-abyssal-anchorfish);
+  --highlight: var(--color-burning-flame);
+  --accent: var(--color-truffle-trouble);
+
+  /* Typography */
+  --font-ui: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-content: 'Crimson Text', Georgia, serif;
+  --font-mono: 'Redbird', 'Space Mono', monospace;
+
+  /* Component Typography Aliases */
+  --font-display: var(--font-ui);
+  --font-body: var(--font-ui);
+
+  /* Layout Dimensions */
+  --sidebar-width: 260px;
+  --topbar-height: 64px;
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+}
+

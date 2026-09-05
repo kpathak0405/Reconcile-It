@@ -1,0 +1,149 @@
+/* ── Save & Reconcile Batch Buttons (Stateful Action Bar) ── */
+.cb-06__bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+}
+
+.cb-06__live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.cb-06__btn {
+  position: relative;
+  cursor: pointer;
+  display: grid;
+  align-items: center;
+  min-height: 2.6rem;
+  padding: 0 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 0.55rem;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--s1);       /* Palladian #EEE9DF */
+  background: var(--ink); /* Abyssal Anchorfish Blue #1B2632 */
+  box-shadow: 0 4px 12px rgba(27, 38, 50, 0.1);
+  transition: background-color 0.25s ease, transform 0.15s ease, border-color 0.2s ease, opacity 0.25s ease;
+}
+
+.cb-06__slot {
+  grid-area: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  opacity: 0;
+  transform: scale(0.94);
+  transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cb-06__slot svg {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+.cb-06__btn[data-state="idle"] .cb-06__slot--idle,
+.cb-06__btn[data-state="disabled"] .cb-06__slot--idle,
+.cb-06__btn[data-state="busy"] .cb-06__slot--busy,
+.cb-06__btn[data-state="done"] .cb-06__slot--done {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Success state -> Warm Blue / Teal settlement confirmation */
+.cb-06__btn[data-state="done"] {
+  background: #235d46;
+  border-color: #235d46;
+  color: #FFFFFF;
+}
+
+.cb-06__btn[data-state="busy"] {
+  cursor: progress;
+  background: var(--muted); /* Blue Fantastic */
+}
+
+/* Ghost / Disabled State for Reconcile Button before Save is done */
+.cb-06__btn--ghost,
+.cb-06__btn:disabled,
+.cb-06__btn[data-state="disabled"] {
+  background: transparent;
+  color: var(--muted);
+  border: 1px dashed var(--line);
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+}
+
+.cb-06__btn--ghost:not(:disabled):not([data-state="disabled"]) {
+  background: var(--ink);
+  color: var(--s1);
+  border: 1px solid var(--line);
+  opacity: 1;
+  cursor: pointer;
+  pointer-events: auto;
+  box-shadow: 0 4px 12px rgba(27, 38, 50, 0.1);
+}
+
+.cb-06__btn--ghost:hover:not(:disabled)[data-state="idle"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--s1);
+}
+
+.cb-06__spin {
+  width: 0.95rem;
+  height: 0.95rem;
+  border-radius: 50%;
+  flex: none;
+  background: conic-gradient(from 0deg, transparent 0 22%, currentColor);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
+  animation: cb-06-spin 0.7s linear infinite;
+}
+
+@keyframes cb-06-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.cb-06__tick path {
+  stroke-dasharray: 26;
+  stroke-dashoffset: 26;
+}
+
+.cb-06__btn[data-state="done"] .cb-06__tick path {
+  animation: cb-06-draw 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cb-06-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.cb-06__btn:hover[data-state="idle"] {
+  background: var(--accent); /* Truffle Trouble #A35139 */
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.cb-06__btn:active[data-state="idle"] {
+  transform: translateY(1px);
+}
+
+.cb-06__btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Razorpay Audit & Reconciliation Canvas</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Work+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Master Stylesheet Importer -->
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+
+<body>
+    <div class="hd-20-app-container">
+        <!-- Sidebar Navigation Component -->
+        <aside class="hd-20-sidebar">
+            <div class="hd-20-sidebar-brand">
+                <span>Razor<span class="accent">pay</span> Audit</span>
+            </div>
+            <nav class="hd-20-sidebar-nav">
+                <a href="#" class="hd-20-sidebar-link active">
+                    <span>Reconciliation</span>
+                </a>
+
+                <!-- MINIMAL OPERATIONAL CYCLE MONITOR -->
+                <div class="sidebar-monitor">
+                    <div class="sidebar-monitor__header">
+                        <span class="sidebar-monitor__title">Cycle Monitor</span>
+                        <div class="sidebar-monitor__status">
+                            <span class="sidebar-monitor__indicator" aria-hidden="true"></span>
+                            <span class="sidebar-monitor__tag">T+2 Active</span>
+                        </div>
+                    </div>
+
+                    <div class="sidebar-monitor__body">
+                        <!-- Active Batch Scope -->
+                        <div class="sidebar-monitor__row">
+                            <span class="sidebar-monitor__label">Batch ID</span>
+                            <span class="sidebar-monitor__val">SETTLE_20260903</span>
+                        </div>
+
+                        <!-- Cut-Off Window -->
+                        <div class="sidebar-monitor__row">
+                            <span class="sidebar-monitor__label">Cut-off</span>
+                            <span class="sidebar-monitor__val">23:50 IST</span>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Header / Topbar Component -->
+        <header class="hd-20-topbar">
+            <div class="hd-20-topbar-title">Financial Reconciliation & Exception Audit</div>
+            <div class="hd-20-topbar-actions">
+                <!-- Header actions placeholder -->
+            </div>
+        </header>
+
+        <!-- Main Content Area (Blank Mounting Canvas) -->
+        <div class="hd-20-content-wrapper">
+            <main id="hd-20-main">
+                <!-- File Ingestion Deck (Two Separate Upload Feeds) -->
+                <div class="fu-04__deck">
+                    <!-- Box 1: ERP Sales Register Feed -->
+                    <section class="fu-04__panel" aria-labelledby="fu-erp-h">
+                        <header class="fu-04__head">
+                            <div>
+                                <h2 class="fu-04__h" id="fu-erp-h">ERP Sales Register Feed</h2>
+                                <p class="fu-04__sub" id="fu-erp-hint">Upload ERP Sales Register &amp; Invoices </p>
+                            </div>
+                            <span class="fu-04__count" id="fu-erp-count">0</span>
+                        </header>
+
+                        <div class="fu-04__pick">
+                            <input class="fu-04__input" id="fu-erp-file" type="file" multiple
+                                accept=".csv,.txt,.pdf,.xml" aria-describedby="fu-erp-hint">
+                            <label class="fu-04__label" for="fu-erp-file">
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                    <path d="M12 5.5v13M5.5 12h13" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" />
+                                </svg>
+                                Select ERP Files (.csv, .txt, .pdf, .xml)
+                            </label>
+                        </div>
+
+                        <ul class="fu-04__list" id="fu-erp-list"></ul>
+                        <p class="fu-04__empty">No ERP sales ledgers queued</p>
+
+                        <footer class="fu-04__foot">
+                            <span class="fu-04__total" id="fu-erp-total">0 B of 25 MB</span>
+                            <button class="fu-04__send" id="fu-erp-send" type="button" disabled>Load &amp; Stage ERP
+                                Batch</button>
+                        </footer>
+                        <p class="fu-04__status" id="fu-erp-status" role="status" aria-live="polite"></p>
+                    </section>
+
+                    <!-- Box 2: Razorpay Settlement Feed -->
+                    <section class="fu-04__panel" aria-labelledby="fu-rzp-h">
+                        <header class="fu-04__head">
+                            <div>
+                                <h2 class="fu-04__h" id="fu-rzp-h">Razorpay Settlement Feed</h2>
+                                <p class="fu-04__sub" id="fu-rzp-hint">Upload Razorpay Settlement &amp; Nodal Reports
+                                </p>
+                            </div>
+                            <span class="fu-04__count" id="fu-rzp-count">0</span>
+                        </header>
+
+                        <div class="fu-04__pick">
+                            <input class="fu-04__input" id="fu-rzp-file" type="file" multiple
+                                accept=".csv,.txt,.pdf,.xml" aria-describedby="fu-rzp-hint">
+                            <label class="fu-04__label" for="fu-rzp-file">
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                    <path d="M12 5.5v13M5.5 12h13" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" />
+                                </svg>
+                                Select Razorpay Files (.csv, .txt, .pdf, .xml)
+                            </label>
+                        </div>
+
+                        <ul class="fu-04__list" id="fu-rzp-list"></ul>
+                        <p class="fu-04__empty">No Razorpay settlement reports queued</p>
+
+                        <footer class="fu-04__foot">
+                            <span class="fu-04__total" id="fu-rzp-total">0 B of 25 MB</span>
+                            <button class="fu-04__send" id="fu-rzp-send" type="button" disabled>Load &amp; Stage
+                                Settlement Batch</button>
+                        </footer>
+                        <p class="fu-04__status" id="fu-rzp-status" role="status" aria-live="polite"></p>
+                    </section>
+                </div>
+
+                <!-- Template for staged file row -->
+                <template id="fu-04-row">
+                    <li class="fu-04__item">
+                        <span class="fu-04__chip" data-ext aria-hidden="true"></span>
+                        <span class="fu-04__meta">
+                            <span class="fu-04__name" data-name></span>
+                            <span class="fu-04__size" data-size></span>
+                        </span>
+                        <button class="fu-04__rm" type="button" data-rm>
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+                                <path d="M6.5 6.5l11 11m0-11-11 11" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" />
+                            </svg>
+                            <span class="fu-04__vh" data-rmlabel>Remove ledger file</span>
+                        </button>
+                    </li>
+                </template>
+
+                <!-- BATCH STAGING PERSISTENCE BAR -->
+                <div class="cb-06__bar">
+                    <!-- Save Button -->
+                    <button class="cb-06__btn" id="btn-save-batch" type="button" data-state="idle"
+                        aria-describedby="cb-06-live">
+                        <!-- Idle State -->
+                        <span class="cb-06__slot cb-06__slot--idle">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
+                                <polyline points="17 21 17 13 7 13 7 21" />
+                                <polyline points="7 3 7 8 15 8" />
+                            </svg>
+                            <span>Save Ledger Staging Changes</span>
+                        </span>
+
+                        <!-- Busy / Saving State -->
+                        <span class="cb-06__slot cb-06__slot--busy">
+                            <span class="cb-06__spin" aria-hidden="true"></span>
+                            <span>Preserving Staged Vouchers</span>
+                        </span>
+
+                        <!-- Saved State -->
+                        <span class="cb-06__slot cb-06__slot--done">
+                            <svg class="cb-06__tick" viewBox="0 0 24 24" aria-hidden="true" fill="none"
+                                stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12.5 10 17.5 19 6.5" />
+                            </svg>
+                            <span>Staged Batch Preserved</span>
+                        </span>
+                    </button>
+
+                    <!-- Reconcile Button (Ghost / Unclickable until Save button is saved) -->
+                    <button class="cb-06__btn cb-06__btn--ghost" id="btn-reconcile-batch" type="button"
+                        data-state="disabled" disabled aria-describedby="cb-06-live">
+                        <!-- Idle State -->
+                        <span class="cb-06__slot cb-06__slot--idle">
+                            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                                <path d="M3 3v5h5" />
+                                <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" />
+                                <path d="M16 16h5v5" />
+                            </svg>
+                            <span>Reconcile Batch</span>
+                        </span>
+
+                        <!-- Busy / Reconciling State -->
+                        <span class="cb-06__slot cb-06__slot--busy">
+                            <span class="cb-06__spin" aria-hidden="true"></span>
+                            <span>Running Matching Engine</span>
+                        </span>
+
+                        <!-- Reconciled State -->
+                        <span class="cb-06__slot cb-06__slot--done">
+                            <svg class="cb-06__tick" viewBox="0 0 24 24" aria-hidden="true" fill="none"
+                                stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12.5 10 17.5 19 6.5" />
+                            </svg>
+                            <span>Batch Reconciled</span>
+                        </span>
+                    </button>
+
+                    <span class="cb-06__live" id="cb-06-live" role="status" aria-live="polite"></span>
+                </div>
+
+                <!-- 4-CARD SETTLEMENT KPI METRICS DECK -->
+                <section class="thc-10" aria-label="Settlement Audit Performance Deck">
+                    <div class="thc-10__grid">
+
+                        <!-- CARD 1: RECONCILIATION MATCH RATE -->
+                        <article class="thc-10__card" tabindex="0"
+                            aria-label="Reconciliation Match Rate: 80 percent, 48 of 60 settled">
+                            <div class="thc-10__head">
+                                <p class="thc-10__label">Match Rate</p>
+                                <span class="thc-10__delta thc-10__delta--teal">48 / 60 Clrd</span>
+                            </div>
+                            <p class="thc-10__value" id="kpi-match-rate">80.0%</p>
+                            <div class="thc-10__spark thc-10__spark--teal" aria-hidden="true">
+                                <i style="--v:40"></i><i style="--v:55"></i><i style="--v:62"></i><i
+                                    style="--v:60"></i><i style="--v:75"></i><i style="--v:72"></i><i
+                                    style="--v:80"></i><i style="--v:85"></i><i style="--v:80"></i>
+                            </div>
+                            <p class="thc-10__foot">Deterministic clearance</p>
+                        </article>
+
+                        <!-- CARD 2: GROSS INVOICED REVENUE -->
+                        <article class="thc-10__card" tabindex="0" aria-label="Gross Invoiced Revenue: 2,60,520 rupees">
+                            <div class="thc-10__head">
+                                <p class="thc-10__label">ERP Gross Sales</p>
+                                <span class="thc-10__delta thc-10__delta--blue">Vouchers</span>
+                            </div>
+                            <p class="thc-10__value" id="kpi-gross-revenue">&#8377;2,60,520</p>
+                            <div class="thc-10__spark thc-10__spark--blue" aria-hidden="true">
+                                <i style="--v:50"></i><i style="--v:45"></i><i style="--v:68"></i><i
+                                    style="--v:62"></i><i style="--v:80"></i><i style="--v:78"></i><i
+                                    style="--v:90"></i><i style="--v:88"></i><i style="--v:95"></i>
+                            </div>
+                            <p class="thc-10__foot">Internal Sales Register</p>
+                        </article>
+
+                        <!-- CARD 3: GATEWAY MDR + TAX (ITC) -->
+                        <article class="thc-10__card" tabindex="0"
+                            aria-label="Gateway MDR and Tax: 6,264 rupees with eligible tax credit">
+                            <div class="thc-10__head">
+                                <p class="thc-10__label">MDR &amp; Tax (ITC)</p>
+                                <span class="thc-10__delta thc-10__delta--flame">18% GST</span>
+                            </div>
+                            <p class="thc-10__value" id="kpi-gateway-fees">&#8377;6,264.38</p>
+                            <div class="thc-10__spark thc-10__spark--flame" aria-hidden="true">
+                                <i style="--v:30"></i><i style="--v:38"></i><i style="--v:42"></i><i
+                                    style="--v:35"></i><i style="--v:48"></i><i style="--v:52"></i><i
+                                    style="--v:44"></i><i style="--v:58"></i><i style="--v:50"></i>
+                            </div>
+                            <p class="thc-10__foot">&#8377;955.58 Eligible ITC</p>
+                        </article>
+
+                        <!-- CARD 4: NET BANK PAYOUT DEPOSIT -->
+                        <article class="thc-10__card" tabindex="0"
+                            aria-label="Net Bank Payout Deposit: 2,53,455 rupees settled to nodal account">
+                            <div class="thc-10__head">
+                                <p class="thc-10__label">Net Bank Payout</p>
+                                <span class="thc-10__delta thc-10__delta--rust">HDFC Nodal</span>
+                            </div>
+                            <p class="thc-10__value" id="kpi-net-payout">&#8377;2,53,455.62</p>
+                            <div class="thc-10__spark thc-10__spark--rust" aria-hidden="true">
+                                <i style="--v:60"></i><i style="--v:64"></i><i style="--v:70"></i><i
+                                    style="--v:68"></i><i style="--v:82"></i><i style="--v:80"></i><i
+                                    style="--v:88"></i><i style="--v:92"></i><i style="--v:90"></i>
+                            </div>
+                            <p class="thc-10__foot">UTR settlement batch</p>
+                        </article>
+
+                    </div>
+                </section>
+
+                <!-- SUSPENSE & UNMATCHED AUDIT QUEUE -->
+                <section class="tls-03" aria-label="Suspense and Unmatched Settlement Queue">
+                    <div class="tls-03__sheet">
+                        <div class="tls-03__h-row">
+                            <h3 class="tls-03__h">Unmatched &amp; Suspense Queue</h3>
+                        </div>
+
+                        <ol class="tls-03__list" id="suspense-list" role="list">
+                            <!-- Item 1: Upstream Bank Network Drop -->
+                            <li class="tls-03__item" data-risk="CRITICAL">
+                                <div class="tls-03__when">
+                                    <time>ORD_1035</time>
+                                    <span class="tls-03__chip tls-03__chip--critical">CRITICAL</span>
+                                </div>
+                                <div class="tls-03__rail" aria-hidden="true"><span class="tls-03__dot"></span></div>
+                                <div class="tls-03__body">
+                                    <p class="tls-03__role">
+                                        Bank Network Drop
+                                        <span class="tls-03__variance">-&#8377;5,700.00</span>
+                                    </p>
+                                    <p class="tls-03__org">HDFC0000060 &middot; UTR Pending &middot; ERP: SUCCESS</p>
+                                    <ul class="tls-03__pts">
+                                        <li>Gateway returned captured confirmation but upstream bank network dropped
+                                            packet during nodal settlement.</li>
+                                    </ul>
+                                    <button class="tls-03__action" type="button">Block Order Fulfillment</button>
+                                </div>
+                            </li>
+
+                            <!-- Item 2: Dropped Webhook / Ghost Payment -->
+                            <li class="tls-03__item" data-risk="CRITICAL">
+                                <div class="tls-03__when">
+                                    <time>ORD_1044</time>
+                                    <span class="tls-03__chip tls-03__chip--critical">CRITICAL</span>
+                                </div>
+                                <div class="tls-03__rail" aria-hidden="true"><span class="tls-03__dot"></span></div>
+                                <div class="tls-03__body">
+                                    <p class="tls-03__role">
+                                        Dropped Webhook Desync
+                                        <span class="tls-03__variance">+&#8377;3,200.00</span>
+                                    </p>
+                                    <p class="tls-03__org">Razorpay: CAPTURED &middot; ERP: RECORD_MISSING</p>
+                                    <ul class="tls-03__pts">
+                                        <li>Customer account debited and cash captured at nodal account, but ERP
+                                            callback timed out.</li>
+                                    </ul>
+                                    <button class="tls-03__action" type="button">Inject Sales Voucher</button>
+                                </div>
+                            </li>
+
+                            <!-- Item 3: Escrow Holdback (14-Day Return Policy) -->
+                            <li class="tls-03__item" data-risk="MEDIUM">
+                                <div class="tls-03__when">
+                                    <time>ORD_1010</time>
+                                    <span class="tls-03__chip tls-03__chip--hold">HOLD</span>
+                                </div>
+                                <div class="tls-03__rail" aria-hidden="true"><span class="tls-03__dot"></span></div>
+                                <div class="tls-03__body">
+                                    <p class="tls-03__role">
+                                        Nodal Escrow Holdback
+                                        <span class="tls-03__variance"
+                                            style="color: var(--muted);">&#8377;2,700.00</span>
+                                    </p>
+                                    <p class="tls-03__org">Return Window Active &middot; Day 4 of 14</p>
+                                    <ul class="tls-03__pts">
+                                        <li>Settlement temporarily paused under buyer return agreement. Payout scheduled
+                                            for rollover batch.</li>
+                                    </ul>
+                                    <button class="tls-03__action" type="button">Track Window Expiry</button>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Application Script -->
+    <script src="/static/js/app.js"></script>
+</body>
+
+</html>

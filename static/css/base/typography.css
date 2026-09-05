@@ -1,0 +1,20 @@
+body {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-ui);
+  color: var(--color-abyssal-anchorfish);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+p, .content-text {
+  font-family: var(--font-content);
+}
+
+.num-mono, code, pre {
+  font-family: var(--font-mono);
+}

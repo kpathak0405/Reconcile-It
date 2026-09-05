@@ -1,0 +1,26 @@
+.hd-20-topbar {
+  height: var(--topbar-height);
+  position: fixed;
+  top: 0;
+  left: var(--sidebar-width);
+  right: 0;
+  background-color: var(--color-palladian);
+  border-bottom: 1px solid var(--color-oatmeal);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 90;
+}
+
+.hd-20-topbar-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-abyssal-anchorfish);
+}
+
+.hd-20-topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}

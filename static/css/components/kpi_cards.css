@@ -1,0 +1,170 @@
+/* ── 4-Card Settlement KPI Balance Deck ── */
+.thc-10 {
+  width: 100%;
+  margin-top: 1.25rem;
+}
+
+.thc-10__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.1rem;
+  width: 100%;
+}
+
+@media (max-width: 1100px) {
+  .thc-10__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .thc-10__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.thc-10 .thc-10__card {
+  width: 100%;
+  padding: 1.15rem 1.25rem;
+  border-radius: 0.9rem;
+  background: var(--s1); /* Palladian #EEE9DF */
+  border: 1px solid var(--line);
+  transform: perspective(1600px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--lift, 0px));
+  transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.05), box-shadow 0.4s ease;
+  box-shadow: 0 4px 14px rgba(27, 38, 50, 0.05);
+  cursor: default;
+}
+
+.thc-10 .thc-10__card.is-live {
+  --lift: -4px;
+  transition: transform 0.08s linear, box-shadow 0.3s ease;
+  box-shadow: 0 16px 28px -10px rgba(27, 38, 50, 0.14);
+}
+
+.thc-10 .thc-10__card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.thc-10__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.thc-10__label {
+  font-family: var(--font-display);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--muted); /* Blue Fantastic */
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.thc-10__delta {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 3px 7px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Delta pill tone variants */
+.thc-10__delta--teal {
+  color: #1a4936;
+  background: rgba(46, 125, 90, 0.16);
+}
+
+.thc-10__delta--blue {
+  color: var(--ink);
+  background: var(--s3); /* Oatmeal */
+}
+
+.thc-10__delta--flame {
+  color: #633605;
+  background: rgba(255, 177, 98, 0.32); /* Burning Flame Tint */
+}
+
+.thc-10__delta--rust {
+  color: #FFFFFF;
+  background: var(--accent); /* Truffle Trouble #A35139 */
+}
+
+.thc-10__value {
+  margin-top: 0.6rem;
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink); /* Abyssal Anchorfish Blue */
+  font-variant-numeric: tabular-nums;
+}
+
+.thc-10__spark {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 36px;
+  margin-top: 0.85rem;
+}
+
+.thc-10__spark i {
+  flex: 1;
+  height: calc(var(--v) * 1%);
+  border-radius: 2px 2px 0 0;
+  background: var(--muted);
+  opacity: 0.7;
+  transform-origin: bottom;
+}
+
+.thc-10__spark--teal i {
+  background: #2e7d5a;
+}
+
+.thc-10__spark--blue i {
+  background: var(--muted);
+}
+
+.thc-10__spark--flame i {
+  background: #d47e24;
+}
+
+.thc-10__spark--rust i {
+  background: var(--accent);
+}
+
+.thc-10 .thc-10__card.is-live .thc-10__spark i {
+  animation: thc-10-grow 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.1) backwards;
+}
+
+.thc-10 .thc-10__spark i:nth-child(2n) {
+  animation-delay: 0.04s;
+}
+
+.thc-10 .thc-10__spark i:nth-child(3n) {
+  animation-delay: 0.08s;
+}
+
+@keyframes thc-10-grow {
+  from {
+    transform: scaleY(0.55);
+  }
+}
+
+.thc-10__foot {
+  margin-top: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thc-10 .thc-10__card {
+    transition: none;
+  }
+  .thc-10 .thc-10__card.is-live .thc-10__spark i {
+    animation: none;
+  }
+}

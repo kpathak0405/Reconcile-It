@@ -1,0 +1,260 @@
+/* ── File Ingestion Deck (Data Ingestion Module) ── */
+.fu-04__deck {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.fu-04__panel {
+  inline-size: 100%;
+  display: grid;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: var(--s1); /* Palladian #EEE9DF */
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(27, 38, 50, 0.05);
+}
+
+.fu-04__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.fu-04__h {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink); /* Abyssal Anchorfish Blue */
+  letter-spacing: -0.02em;
+}
+
+.fu-04__sub {
+  margin: 0.25rem 0 0;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  color: var(--muted); /* Blue Fantastic */
+}
+
+.fu-04__count {
+  display: grid;
+  place-items: center;
+  min-inline-size: 2rem;
+  block-size: 2rem;
+  padding-inline: 0.5rem;
+  border-radius: 999px;
+  background: rgba(255, 177, 98, 0.2); /* Burning Flame Tint */
+  border: 1px solid #FFB162;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.fu-04__input {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  overflow: hidden;
+  opacity: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.fu-04__label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+  min-block-size: 3rem;
+  border-radius: 0.75rem;
+  border: 1px dashed var(--muted);
+  background: rgba(201, 193, 177, 0.35); /* Oatmeal tint */
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.fu-04__label svg {
+  inline-size: 1.1rem;
+  block-size: 1.1rem;
+  color: var(--accent); /* Truffle Trouble */
+}
+
+.fu-04__label:hover {
+  background: rgba(201, 193, 177, 0.6);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.fu-04__input:focus-visible + .fu-04__label {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.fu-04__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+  max-block-size: 12rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.fu-04__list:empty {
+  display: none;
+}
+
+.fu-04__empty {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-align: center;
+  padding-block: 0.75rem;
+}
+
+.fu-04__panel:has(.fu-04__item) .fu-04__empty {
+  display: none;
+}
+
+.fu-04__item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.65rem;
+  border-radius: 0.6rem;
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  transition: border-color 0.2s ease;
+}
+
+.fu-04__item:hover {
+  border-color: var(--accent);
+}
+
+.fu-04__chip {
+  display: grid;
+  place-items: center;
+  inline-size: 2.25rem;
+  block-size: 2.25rem;
+  border-radius: 0.5rem;
+  flex: none;
+  background: rgba(163, 81, 57, 0.12); /* Truffle Trouble tint */
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.fu-04__meta {
+  display: grid;
+  gap: 0.1rem;
+  min-inline-size: 0;
+}
+
+.fu-04__name {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fu-04__size {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.fu-04__rm {
+  display: grid;
+  place-items: center;
+  inline-size: 2rem;
+  block-size: 2rem;
+  flex: none;
+  cursor: pointer;
+  border: 0;
+  border-radius: 0.4rem;
+  background: transparent;
+  color: var(--muted);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.fu-04__rm svg {
+  inline-size: 1rem;
+  block-size: 1rem;
+}
+
+.fu-04__rm:hover {
+  background: rgba(163, 81, 57, 0.15);
+  color: var(--accent);
+}
+
+.fu-04__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block-start: 0.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.fu-04__total {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.fu-04__send {
+  min-block-size: 2.35rem;
+  padding: 0.5rem 1.25rem;
+  border: 0;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  background: var(--ink); /* Abyssal Anchorfish Blue */
+  color: var(--s1);       /* Palladian */
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: background-color 0.2s ease, transform 0.15s ease, opacity 0.2s ease;
+}
+
+.fu-04__send:hover:not(:disabled) {
+  background: var(--accent); /* Truffle Trouble */
+  transform: translateY(-1px);
+}
+
+.fu-04__send:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.fu-04__status {
+  margin: 0;
+  min-block-size: 1rem;
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  color: var(--accent);
+}

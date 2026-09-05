@@ -1,0 +1,207 @@
+/* ── Suspense Queue & Audit Trail Timeline ── */
+.tls-03 {
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.tls-03__sheet {
+  width: 100%;
+  background: var(--s1, var(--color-palladian));
+  border: 1px solid var(--line, var(--color-oatmeal));
+  border-radius: 1rem;
+  padding: 1.25rem;
+  box-shadow: 0 4px 20px rgba(27, 38, 50, 0.05);
+}
+
+.tls-03__h-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.tls-03__h {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink, var(--color-abyssal-anchorfish));
+  letter-spacing: -0.02em;
+}
+
+.tls-03__badge-count {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(163, 81, 57, 0.15); /* Truffle Trouble tint */
+  border: 1px solid var(--accent, var(--color-truffle-trouble));
+  color: var(--accent, var(--color-truffle-trouble));
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.tls-03__list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 10ch 24px 1fr;
+  row-gap: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.tls-03__item {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 10ch 24px 1fr;
+  column-gap: 12px;
+  padding-block: 12px;
+  border-radius: 0.6rem;
+  transition: background 0.15s ease;
+}
+
+.tls-03__item:hover {
+  background: rgba(201, 193, 177, 0.3); /* Oatmeal tint */
+}
+
+.tls-03__when {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 2px;
+}
+
+.tls-03__when time {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ink, var(--color-abyssal-anchorfish));
+}
+
+.tls-03__chip {
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  border-radius: 4px;
+  padding: 2px 5px;
+  margin-top: 4px;
+  letter-spacing: 0.03em;
+}
+
+.tls-03__chip--critical {
+  color: #FFFFFF;
+  background: var(--accent, var(--color-truffle-trouble));
+}
+
+.tls-03__chip--warning {
+  color: var(--ink, var(--color-abyssal-anchorfish));
+  background: var(--highlight, var(--color-burning-flame));
+}
+
+.tls-03__chip--hold {
+  color: var(--ink, var(--color-abyssal-anchorfish));
+  background: var(--line, var(--color-oatmeal));
+}
+
+.tls-03__rail {
+  position: relative;
+  display: grid;
+  justify-items: center;
+}
+
+.tls-03__rail::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: -12px;
+  width: 2px;
+  background: var(--line, var(--color-oatmeal));
+}
+
+.tls-03__item:last-child .tls-03__rail::before {
+  bottom: auto;
+  height: 8px;
+}
+
+.tls-03__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--s1, var(--color-palladian));
+  border: 2.5px solid var(--muted, var(--color-blue-fantastic));
+  margin-top: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+.tls-03__item[data-risk="CRITICAL"] .tls-03__dot {
+  border-color: var(--accent, var(--color-truffle-trouble));
+  box-shadow: 0 0 0 3px rgba(163, 81, 57, 0.25);
+}
+
+.tls-03__item[data-risk="MEDIUM"] .tls-03__dot {
+  border-color: var(--highlight, var(--color-burning-flame));
+  box-shadow: 0 0 0 3px rgba(255, 177, 98, 0.3);
+}
+
+.tls-03__role {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ink, var(--color-abyssal-anchorfish));
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tls-03__variance {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--accent, var(--color-truffle-trouble));
+  font-weight: 700;
+}
+
+.tls-03__org {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted, var(--color-blue-fantastic));
+  margin-top: 2px;
+}
+
+.tls-03__pts {
+  margin: 6px 0 0 0;
+  list-style: none;
+  display: grid;
+  gap: 4px;
+}
+
+.tls-03__pts li {
+  font-family: var(--font-content);
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--ink, var(--color-abyssal-anchorfish));
+}
+
+.tls-03__action {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 6px;
+  padding: 0.25rem 0.65rem;
+  border: 1px solid var(--line, var(--color-oatmeal));
+  border-radius: 4px;
+  background: var(--s1, var(--color-palladian));
+  color: var(--ink, var(--color-abyssal-anchorfish));
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.tls-03__action:hover {
+  background: var(--ink, var(--color-abyssal-anchorfish));
+  color: var(--s1, var(--color-palladian));
+  border-color: var(--ink, var(--color-abyssal-anchorfish));
+}
